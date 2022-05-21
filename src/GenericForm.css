@@ -7,7 +7,20 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body > div {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.genericform {
+  width: 400px;
+  margin: 0 auto;
+}
+.genericform label {
+  font-size: 12px;
+  display: block;
+  margin-top: 10px;
+}
+button {
+  margin-top: 10px;
 }

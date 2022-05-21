@@ -1,19 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+import React from 'react'
+import ReactDOM from 'react-dom'
+import GenericForm from './GenericForm'
+import { FormConfig } from './interfaces'
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+declare global {
+  interface Window {
+      forms:FormConfig[]
+  }
+}
+
+const forms = window.forms
+
+if (typeof forms !== 'undefined') {
+
+  forms.map( (form: FormConfig) => (
+    ReactDOM.render(
+      <React.StrictMode>
+        <GenericForm config={form} />
+      </React.StrictMode>,
+      document.getElementById(form.selector)
+    )
+  ) )
+
+}
